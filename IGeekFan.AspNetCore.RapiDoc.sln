@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGeekFan.AspNetCore.RapiDoc", "IGeekFan.AspNetCore.RapiDoc\IGeekFan.AspNetCore.RapiDoc.csproj", "{D88E10F0-370F-43DD-8B12-FB58B6722B39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IGeekFan.AspNetCore.RapiDoc", "src\IGeekFan.AspNetCore.RapiDoc\IGeekFan.AspNetCore.RapiDoc.csproj", "{BFA6BBD8-2862-4CAC-AB20-D14E8DC04DD5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B5103435-9FCA-4BDF-ACCF-5F5A347CEF53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C3E86A54-2BD5-483F-BFE9-A7D6D07CD8CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basic", "test\Basic\Basic.csproj", "{01A89D72-6B6F-4FC4-A9C7-0B100BCDE085}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OAuth2Integration", "test\WebSites\OAuth2Integration\OAuth2Integration.csproj", "{1E21CFFA-A282-4D95-93EC-B64EA7E990A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapiDocDemo", "test\Knife4jUIDemo\RapiDocDemo.csproj", "{495204E0-83E2-4D21-84FE-C3D64E1A48D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +21,31 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D88E10F0-370F-43DD-8B12-FB58B6722B39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D88E10F0-370F-43DD-8B12-FB58B6722B39}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D88E10F0-370F-43DD-8B12-FB58B6722B39}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D88E10F0-370F-43DD-8B12-FB58B6722B39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFA6BBD8-2862-4CAC-AB20-D14E8DC04DD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFA6BBD8-2862-4CAC-AB20-D14E8DC04DD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFA6BBD8-2862-4CAC-AB20-D14E8DC04DD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFA6BBD8-2862-4CAC-AB20-D14E8DC04DD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01A89D72-6B6F-4FC4-A9C7-0B100BCDE085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01A89D72-6B6F-4FC4-A9C7-0B100BCDE085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01A89D72-6B6F-4FC4-A9C7-0B100BCDE085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01A89D72-6B6F-4FC4-A9C7-0B100BCDE085}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E21CFFA-A282-4D95-93EC-B64EA7E990A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E21CFFA-A282-4D95-93EC-B64EA7E990A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E21CFFA-A282-4D95-93EC-B64EA7E990A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E21CFFA-A282-4D95-93EC-B64EA7E990A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{495204E0-83E2-4D21-84FE-C3D64E1A48D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{495204E0-83E2-4D21-84FE-C3D64E1A48D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{495204E0-83E2-4D21-84FE-C3D64E1A48D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{495204E0-83E2-4D21-84FE-C3D64E1A48D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BFA6BBD8-2862-4CAC-AB20-D14E8DC04DD5} = {B5103435-9FCA-4BDF-ACCF-5F5A347CEF53}
+		{01A89D72-6B6F-4FC4-A9C7-0B100BCDE085} = {C3E86A54-2BD5-483F-BFE9-A7D6D07CD8CE}
+		{1E21CFFA-A282-4D95-93EC-B64EA7E990A8} = {C3E86A54-2BD5-483F-BFE9-A7D6D07CD8CE}
+		{495204E0-83E2-4D21-84FE-C3D64E1A48D9} = {C3E86A54-2BD5-483F-BFE9-A7D6D07CD8CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EEADF4B8-C57B-478B-9F68-08BA4F309C65}

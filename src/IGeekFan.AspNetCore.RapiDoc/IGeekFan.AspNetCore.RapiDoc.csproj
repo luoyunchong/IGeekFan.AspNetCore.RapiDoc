@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;netcoreapp3.0</TargetFrameworks>
+		<Description>Middleware to expose an embedded version of the knife4j-vue-v3 from an ASP.NET Core application</Description>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PackageId></PackageId>
+		<PackageTags>swagger;documentation;discovery;help;webapi;aspnet;aspnetcore</PackageTags>
+		<PackageProjectUrl>https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc.git</RepositoryUrl>
+		<RootNamespace>IGeekFan.AspNetCore.RapiDoc</RootNamespace>
+		<Version>0.0.7</Version>
+		<Company />
+		<Authors>igeekfan;</Authors>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Copyright>Apache License 2.0</Copyright>
+		<PackageLicenseExpression></PackageLicenseExpression>
+		<AssemblyVersion>0.0.1.0</AssemblyVersion>
+		<FileVersion>0.0.1.0</FileVersion>
+		<AssemblyName>IGeekFan.AspNetCore.RapiDoc</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+		<PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.1.0" />
+		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.0" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="2.1.0" />
+		<PackageReference Include="System.Text.Json" Version="4.6.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.0' ">
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="RapiDoc/**" />
+		<EmbeddedResource Include="index.html"></EmbeddedResource>
+	</ItemGroup>
+
+</Project>
