@@ -38,8 +38,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="RapiDoc/**" />
-		<EmbeddedResource Include="index.html"></EmbeddedResource>
+		<EmbeddedResource Include="oauth-receiver.html" />
+		<EmbeddedResource Include="index.html" />
+		<EmbeddedResource Include="node_modules/rapidoc/dist/*" />
+		 <!--Exclude="**/**/*/*.map;**/**/*/*.json;**/**/*/*.html;**/**/*/*.md"--> 
 	</ItemGroup>
 
+	<Target Name="NpmInstall" BeforeTargets="Build">
+		<Exec Command="npm install" EnvironmentVariables="PATH=$(Path.Replace(';', '%3B'))" ContinueOnError="true">
+			<Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+		</Exec>
+		<Error Condition="'$(ErrorCode)' != '0'" Text="Node.js/npm is required to build this project. To continue, please install Node.js from https://nodejs.org/ or Visual Studio Installer, and then restart your command prompt or IDE." />
+	</Target>
+
+	
 </Project>

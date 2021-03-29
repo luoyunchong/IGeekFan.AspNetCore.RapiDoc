@@ -16,13 +16,15 @@ namespace OAuth2Integration.AuthServer
                 RedirectUris = new[] {
                     "http://localhost:55202/resource-server/swagger/oauth2-redirect.html", // IIS Express
                     "http://localhost:5000/resource-server/swagger/oauth2-redirect.html", // Kestrel
+                    "http://localhost:5000/oauth-receiver.html", // 没有之 个会导致重定向地址不对
                 },
 
                 ClientSecrets = { new Secret("test-secret".Sha256()) },
                 RequireConsent = true,
 
                 AllowedGrantTypes = GrantTypes.Code,
-                RequirePkce = true,
+                // rapidoc 这个要设置成 code challenge required
+                RequirePkce = false,
                 AllowedScopes = new[] { "readAccess", "writeAccess" },
             };
         }

@@ -3,19 +3,49 @@
 <head>
     <title>%(DocumentTitle)</title>
     <meta charset="utf-8">
-    <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <meta name=viewport content="width=device-width,initial-scale=1">
-    <script src="RapiDoc/rapidoc-min.js"></script>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes">
+    <script type="module" src="rapidoc-min.js"></script>
     %(HeadContent)
 </head>
 
 <body>
     <noscript><strong>We're sorry but RapiDoc doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript>
-    <rapi-doc spec-url="%(Url)"> </rapi-doc>
+    <rapi-doc id="thedoc" 
+              spec-url="%(Url)"
+              sort-tags="true"
+              allow-server-selection="false" 
+              show-header="true" 
+              show-info="true"
+              theme="dark"
+              allow-try="true"
+              sort-endpoints-by="summary"
+              allow-api-list-style-selection="false"
+              regular-font="Open Sans"
+              schema-style="tree" 
+              render-style="focused" 
+              default-schema-tab="model" 
+              schema-expand-level="3"
+              >
+        <div slot="nav-logo" style="width:100%; display: flex;justify-content: center;">
+            <button class="btn medium" onclick="document.getElementById('thedoc').setAttribute('schema-style', 'table')">Table</button>
+            <button class="btn medium" onclick="document.getElementById('thedoc').setAttribute('schema-style', 'tree')">Tree</button>
+        </div>
+        <div slot="get-/test" style="width:100%; display: flex;justify-content: center;">
+            <b style="color:red">We're sorry</b>
+        </div>
+    </rapi-doc>
     <script>
-        window.onload = function () {
 
-        }
+
+        //window.onload = function () {
+        //    var configObject = JSON.parse('%(ConfigObject)');
+        //    var oauthConfigObject = JSON.parse('%(OAuthConfigObject)');
+
+        //    window.addEventListener('DOMContentLoaded', (event) => {
+            
+
+        //    });
+        //}
     </script>
 </body>
 

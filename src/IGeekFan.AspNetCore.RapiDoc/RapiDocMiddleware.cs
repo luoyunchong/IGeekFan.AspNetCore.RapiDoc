@@ -21,7 +21,7 @@ namespace IGeekFan.AspNetCore.RapiDoc
 {
     public class RapiDocMiddleware
     {
-        private const string EmbeddedFileNamespace = "IGeekFan.AspNetCore.RapiDoc";
+        private const string EmbeddedFileNamespace = "IGeekFan.AspNetCore.RapiDoc.node_modules.rapidoc.dist";
 
         private readonly RapiDocOptions _options;
         private readonly StaticFileMiddleware _staticFileMiddleware;
@@ -63,6 +63,12 @@ namespace IGeekFan.AspNetCore.RapiDoc
             if (httpMethod == "GET" && Regex.IsMatch(path, $"^/{Regex.Escape(_options.RoutePrefix)}/?index.html$"))
             {
                 await RespondWithIndexHtml(httpContext.Response);
+                return;
+            }
+
+            if (httpMethod == "GET" && Regex.IsMatch(path, $"^/{Regex.Escape(_options.RoutePrefix)}/?oauth-receiver.html$"))
+            {
+                await RespondWithOAuthReceiverHtml(httpContext.Response);
                 return;
             }
 
@@ -120,6 +126,24 @@ namespace IGeekFan.AspNetCore.RapiDoc
             }
         }
 
+        private async Task RespondWithOAuthReceiverHtml(HttpResponse response)
+        {
+            response.StatusCode = 200;
+            response.ContentType = "text/html;charset=utf-8";
+
+            using (var stream = _options.OAuthReceiverStream())
+            {
+                var htmlBuilder = new StringBuilder(new StreamReader(stream).ReadToEnd());
+
+                foreach (var entry in GetIndexArguments())
+                {
+                    htmlBuilder.Replace(entry.Key, entry.Value);
+                }
+
+                await response.WriteAsync(htmlBuilder.ToString(), Encoding.UTF8);
+            }
+        }
+
 
         private IDictionary<string, string> GetIndexArguments()
         {
@@ -128,7 +152,8 @@ namespace IGeekFan.AspNetCore.RapiDoc
                 { "%(DocumentTitle)", _options.DocumentTitle },
                 { "%(HeadContent)", _options.HeadContent },
                 { "%(Url)", _options.ConfigObject.Urls.First().Url },
-                //{ "%(OAuthConfigObject)", JsonSerializer.Serialize(_options.OAuthConfigObject, _jsonSerializerOptions) }
+                { "%(ConfigObject)", JsonSerializer.Serialize(_options.ConfigObject, _jsonSerializerOptions) },
+                { "%(OAuthConfigObject)", JsonSerializer.Serialize(_options.OAuthConfigObject, _jsonSerializerOptions) }
             };
         }
     }

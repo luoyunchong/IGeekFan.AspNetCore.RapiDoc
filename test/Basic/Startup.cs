@@ -39,7 +39,7 @@ namespace Basic
                         TermsOfService = new Uri("http://tempuri.org/terms")
                     }
                 );
-                c.SwaggerDoc("gp", new OpenApiInfo { Title = "µÇÂ¼Ä£¿é", Version = "GP" });
+                c.SwaggerDoc("gp", new OpenApiInfo { Title = "gp æ ‡é¢˜", Version = "GP" });
                 c.RequestBodyFilter<AssignRequestBodyVendorExtensions>();
 
                 c.OperationFilter<AssignOperationVendorExtensions>();
@@ -103,15 +103,15 @@ namespace Basic
 
             app.UseSwaggerUI(c =>
             {
-                c.RoutePrefix = ""; // serve the UI at root
+                //c.RoutePrefix = ""; // serve the UI at root
                 c.SwaggerEndpoint("/v1/api-docs", "V1 Docs");
-                c.SwaggerEndpoint("/gp/api-docs", "µÇÂ¼Ä£¿é");
+                c.SwaggerEndpoint("/gp/api-docs", "gp Doc");
             });
             app.UseRapiDocUI(c =>
             {
-                //c.RoutePrefix = ""; // serve the UI at root
+                c.RoutePrefix = ""; // serve the UI at root
                 c.SwaggerEndpoint("/v1/api-docs", "V1 Docs");
-                c.SwaggerEndpoint("/gp/api-docs", "µÇÂ¼Ä£¿é");
+                c.SwaggerEndpoint("/gp/api-docs", "gp Doc");
             });
 
 

@@ -20,6 +20,9 @@ namespace IGeekFan.AspNetCore.RapiDoc
         public Func<Stream> IndexStream { get; set; } = () => typeof(RapiDocOptions).GetTypeInfo().Assembly
             .GetManifestResourceStream("IGeekFan.AspNetCore.RapiDoc.index.html");
 
+        public Func<Stream> OAuthReceiverStream { get; set; } = () => typeof(RapiDocOptions).GetTypeInfo().Assembly
+        .GetManifestResourceStream("IGeekFan.AspNetCore.RapiDoc.oauth-receiver.html");
+
         /// <summary>
         /// Gets or sets a title for the swagger-ui page
         /// </summary>
@@ -36,11 +39,14 @@ namespace IGeekFan.AspNetCore.RapiDoc
         public ConfigObject ConfigObject { get; set; } = new ConfigObject();
 
         /// <summary>
-        /// 暂不支持此特性Gets the JavaScript config object, represented as JSON, that will be passed to the initOAuth method
+        /// Gets the JavaScript config object, represented as JSON, that will be passed to the initOAuth method
         /// </summary>
-        [Obsolete]
         public OAuthConfigObject OAuthConfigObject { get; set; } = new OAuthConfigObject();
+
+       
+        public GenericRapiConfig GenericRapiConfig { get; set; } = new GenericRapiConfig();
     }
+
 
     public class ConfigObject
     {

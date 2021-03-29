@@ -10,6 +10,8 @@ using Microsoft.OpenApi.Models;
 using NCaptcha.AspNetCore.SessionImages;
 using IGeekFan.AspNetCore.RapiDoc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.OpenApi.Interfaces;
+using Microsoft.OpenApi.Any;
 
 namespace OAuth2Integration
 {
@@ -39,7 +41,7 @@ namespace OAuth2Integration
                 .AddCookie()
                 .AddIdentityServerAuthentication(c =>
                 {
-                    c.Authority = "http://localhost:55202/auth-server/";
+                    c.Authority = "http://localhost:5000/auth-server/";
                     c.RequireHttpsMetadata = false;
                     c.ApiName = "api";
                 });
@@ -68,14 +70,19 @@ namespace OAuth2Integration
                     {
                         AuthorizationCode = new OpenApiOAuthFlow
                         {
-                            AuthorizationUrl = new Uri("/auth-server/connect/authorize", UriKind.Relative),
-                            TokenUrl = new Uri("/auth-server/connect/token", UriKind.Relative),
+                            AuthorizationUrl = new Uri("http://localhost:5000/auth-server/connect/authorize", UriKind.Absolute),
+                            TokenUrl = new Uri("http://localhost:5000/auth-server/connect/token", UriKind.Absolute),
                             Scopes = new Dictionary<string, string>
                             {
                                 { "readAccess", "Access read operations" },
                                 { "writeAccess", "Access write operations" }
                             }
                         }
+                    },
+                    Extensions = new Dictionary<string, IOpenApiExtension>()
+                    {
+                       {"x-client-id", new OpenApiString("test-id")},
+                       {"x-client-secret", new OpenApiString("test-secret")},
                     }
                 });
 
@@ -143,9 +150,10 @@ namespace OAuth2Integration
 
                 app.UseRapiDocUI(c =>
                 {
-                    c.RoutePrefix = ""; //http://localhost:5000/index.html#/home
+                    c.RoutePrefix = ""; //http://localhost:5000/index.html
                     c.SwaggerEndpoint("/resource-server/swagger/v1/swagger.json", "My API V1");
                     c.EnableDeepLinking();
+                    //无效，看上面的82行配置。
                     c.OAuthClientId("test-id");
                     c.OAuthClientSecret("test-secret");
                     c.OAuthAppName("test-app");
