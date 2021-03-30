@@ -6,7 +6,7 @@
 		<NoWarn>$(NoWarn);1591</NoWarn>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<PackageId>IGeekFan.AspNetCore.RapiDoc</PackageId>
-		<PackageTags>swagger;documentation;discovery;help;webapi;aspnet;aspnetcore</PackageTags>
+		<PackageTags>swagger;documentation;webapi;aspnet;aspnetcore;rapidoc;</PackageTags>
 		<PackageProjectUrl>https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc.git</RepositoryUrl>
@@ -15,11 +15,12 @@
 		<Company />
 		<Authors>igeekfan;</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Copyright>Apache License 2.0</Copyright>
+		<Copyright>MIT License</Copyright>
 		<PackageLicenseExpression></PackageLicenseExpression>
 		<AssemblyVersion>0.0.1.0</AssemblyVersion>
 		<FileVersion>0.0.1.0</FileVersion>
 		<AssemblyName>IGeekFan.AspNetCore.RapiDoc</AssemblyName>
+		<PackageLicenseFile></PackageLicenseFile>
 	</PropertyGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
@@ -43,6 +44,7 @@
 		<EmbeddedResource Include="node_modules/rapidoc/dist/*" />
 		 <!--Exclude="**/**/*/*.map;**/**/*/*.json;**/**/*/*.html;**/**/*/*.md"--> 
 	</ItemGroup>
+
 
 	<Target Name="NpmInstall" BeforeTargets="Build">
 		<Exec Command="npm install" EnvironmentVariables="PATH=$(Path.Replace(';', '%3B'))" ContinueOnError="true">
