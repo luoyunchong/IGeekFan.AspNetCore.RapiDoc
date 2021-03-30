@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\IGeekFan.AspNetCore.RapiDoc\IGeekFan.AspNetCore.RapiDoc.csproj" />
+    <ProjectReference Include="..\..\src\IGeekFan.AspNetCore.RapiDoc\IGeekFan.AspNetCore.RapiDoc.csproj" />
   </ItemGroup>
 
 </Project>

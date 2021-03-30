@@ -14,8 +14,8 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Hosting;
 using System.Collections.Generic;
-#if NETCOREAPP3_0
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IWebHostEnvironment;
+#if NETSTANDARD2_0
+using IWebHostEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 #endif
 namespace IGeekFan.AspNetCore.RapiDoc
 {
@@ -29,7 +29,7 @@ namespace IGeekFan.AspNetCore.RapiDoc
 
         public RapiDocMiddleware(
             RequestDelegate next,
-            IHostingEnvironment hostingEnv,
+            IWebHostEnvironment hostingEnv,
             ILoggerFactory loggerFactory,
             RapiDocOptions options)
         {
@@ -71,24 +71,12 @@ namespace IGeekFan.AspNetCore.RapiDoc
                 await RespondWithOAuthReceiverHtml(httpContext.Response);
                 return;
             }
-
-            if (httpMethod == "GET" && Regex.IsMatch(path, $"^/v3/api-docs/swagger-config$"))
-            {
-                await RespondWithConfig(httpContext.Response);
-                return;
-            }
-
             await _staticFileMiddleware.Invoke(httpContext);
         }
       
-        private async Task RespondWithConfig(HttpResponse response)
-        {
-            await response.WriteAsync(JsonSerializer.Serialize(_options.ConfigObject, _jsonSerializerOptions));
-        }
-
         private StaticFileMiddleware CreateStaticFileMiddleware(
             RequestDelegate next,
-            IHostingEnvironment hostingEnv,
+            IWebHostEnvironment hostingEnv,
             ILoggerFactory loggerFactory,
             RapiDocOptions options)
         {

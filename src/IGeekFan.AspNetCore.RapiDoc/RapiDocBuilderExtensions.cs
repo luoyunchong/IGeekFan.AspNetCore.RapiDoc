@@ -9,7 +9,7 @@ namespace IGeekFan.AspNetCore.RapiDoc
     public static class RapiDocBuilderExtensions
     {
         /// <summary>
-        /// Register the SwaggerUI middleware with provided options
+        /// Register the RapiDocUI middleware with provided options
         /// </summary>
         public static IApplicationBuilder UseRapiDocUI(this IApplicationBuilder app, RapiDocOptions options)
         {
@@ -20,16 +20,6 @@ namespace IGeekFan.AspNetCore.RapiDoc
              this IApplicationBuilder app,
              Action<RapiDocOptions> setupAction = null)
         {
-            //var options = new RapiDocOptions();
-            //if (setupAction != null)
-            //{
-            //    setupAction(options);
-            //}
-            //else
-            //{
-            //    options = app.ApplicationServices.GetRequiredService<IOptions<RapiDocOptions>>().Value;
-            //}
-
             RapiDocOptions options;
             using (var scope = app.ApplicationServices.CreateScope())
             {
