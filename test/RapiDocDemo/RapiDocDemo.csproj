@@ -4,14 +4,18 @@
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 		<UserSecretsId>cb2091c6-d10b-4c1a-89c7-c72588c6ffe0</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<RootNamespace>RapiDocDemo</RootNamespace>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DocumentationFile>Knife4jUIDemo.xml</DocumentationFile>
+		<DocumentationFile>RapiDocDemo.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+		<!--<PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />-->
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
+		<!--<PackageReference Include="IGeekFan.AspNetCore.RapiDoc" Version="0.0.1" />-->
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
 	</ItemGroup>
 

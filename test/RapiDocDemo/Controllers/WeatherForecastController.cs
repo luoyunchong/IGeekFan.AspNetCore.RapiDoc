@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-using RapiDocDemo;
-
-namespace Knife4jUIDemo.Controllers
+namespace RapiDocDemo.Controllers
 {
     /// <summary>
-    /// 中文这是一个Get请求这是一个Get请求
+    /// This is api docs
     /// </summary>
     [ApiController]
     [Route("api/WeatherForecast")]
@@ -30,7 +27,7 @@ namespace Knife4jUIDemo.Controllers
         }
 
         /// <summary>
-        /// 这是一个Get请求
+        /// this is Get method
         /// </summary>
         /// <returns></returns>
         [HttpGet]

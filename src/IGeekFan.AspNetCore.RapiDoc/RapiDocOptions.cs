@@ -44,7 +44,7 @@ namespace IGeekFan.AspNetCore.RapiDoc
         public OAuthConfigObject OAuthConfigObject { get; set; } = new OAuthConfigObject();
 
        
-        public GenericRapiConfig GenericRapiConfig { get; set; } = new GenericRapiConfig();
+        //public GenericRapiConfig GenericRapiConfig { get; set; } = new GenericRapiConfig();
     }
 
 

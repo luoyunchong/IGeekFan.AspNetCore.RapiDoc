@@ -5,9 +5,9 @@ using System.Text;
 namespace IGeekFan.AspNetCore.RapiDoc
 {
     /// <summary>
-    /// https://mrin9.github.io/RapiDoc/api.html
+    /// https://mrin9.github.io/RapiDoc/api.html  now not support
     /// </summary>
-    public class GenericRapiConfig
+    class GenericRapiConfig
     {
         /// <summary>
         /// url of the OpenAPI spec to view

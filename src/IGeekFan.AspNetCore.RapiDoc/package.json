@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "rapidoc": "^8.4.9"
+    "rapidoc": "^9.0.0"
   }
 }

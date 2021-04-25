@@ -37,7 +37,7 @@ namespace RapiDocDemo
                     return controllerAction.ControllerName + "-" + controllerAction.ActionName;
                 });
 
-                var filePath = Path.Combine(System.AppContext.BaseDirectory, "Knife4jUIDemo.xml");
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "RapiDocDemo.xml");
                 c.IncludeXmlComments(filePath, true);
             });
         }
@@ -58,10 +58,10 @@ namespace RapiDocDemo
 
             app.UseSwagger();
 
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/v1/api-docs", "LinCms");
-            });
+            //app.UseSwaggerUI(c =>
+            //{
+            //    c.SwaggerEndpoint("/v1/api-docs", "LinCms");
+            //});
 
             app.UseRapiDocUI(c =>
             {

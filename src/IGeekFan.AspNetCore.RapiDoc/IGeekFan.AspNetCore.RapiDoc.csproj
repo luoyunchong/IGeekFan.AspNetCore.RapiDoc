@@ -11,14 +11,14 @@
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc.git</RepositoryUrl>
 		<RootNamespace>IGeekFan.AspNetCore.RapiDoc</RootNamespace>
-		<Version>0.0.1</Version>
+		<Version>0.0.2</Version>
 		<Company />
 		<Authors>igeekfan;</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Copyright>MIT License</Copyright>
 		<PackageLicenseExpression></PackageLicenseExpression>
-		<AssemblyVersion>0.0.1.0</AssemblyVersion>
-		<FileVersion>0.0.1.0</FileVersion>
+		<AssemblyVersion>0.0.2.0</AssemblyVersion>
+		<FileVersion>0.0.2.0</FileVersion>
 		<AssemblyName>IGeekFan.AspNetCore.RapiDoc</AssemblyName>
 		<PackageLicenseFile></PackageLicenseFile>
 	</PropertyGroup>
@@ -33,10 +33,6 @@
 	<ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' ">
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.1" />
-		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<EmbeddedResource Include="oauth-receiver.html" />
@@ -44,7 +40,6 @@
 		<EmbeddedResource Include="node_modules/rapidoc/dist/*" />
 		 <!--Exclude="**/**/*/*.map;**/**/*/*.json;**/**/*/*.html;**/**/*/*.md"--> 
 	</ItemGroup>
-
 
 	<Target Name="NpmInstall" BeforeTargets="Build">
 		<Exec Command="npm install" EnvironmentVariables="PATH=$(Path.Replace(';', '%3B'))" ContinueOnError="true">
