@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNetCore6_RapiDemo</name>
+    </assembly>
+    <members>
+        <member name="M:AspNetCore6_RapiDemo.Controllers.WeatherForecastController.Get">
+            <summary>
+            这是中文
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

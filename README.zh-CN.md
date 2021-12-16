@@ -1,7 +1,7 @@
 <div align="center">
 <h1 align="center"> <img alt="MrinDoc logo" src="docs/images/logo.png" width="40px" />  IGeekFan.AspNetCore.RapiDoc </h1>
 
-**[RapiDoc](https://github.com/mrin9/RapiDoc)** Custom Element for Open-API spec viewing ，支持 .NET Core3.1 、.NET Standard2.0、.NET5.0。
+**[RapiDoc](https://github.com/mrin9/RapiDoc)** Custom Element for Open-API spec viewing ，支持 .NET Core3.1 、.NET Standard2.0、.NET5.0、.NET6.0。
 
 一个实现了Swagger 2.0 and OpenAPI 3.0，适用于任何框架或没有框架的API文档.我将其集成到 AspNetCore 中。更多特性，请参考 **[RapiDoc](https://github.com/mrin9/RapiDoc) README**
 
@@ -61,7 +61,7 @@ using IGeekFan.AspNetCore.RapiDoc;
    services.AddSwaggerGen(c =>
     {
         c.SwaggerDoc("v1",new OpenApiInfo{Title = "API V1",Version = "v1"});
-        var filePath = Path.Combine(System.AppContext.BaseDirectory $"{typeof(Startup).Assembly.GetName().Name}.xml");
+        var filePath = Path.Combine(System.AppContext.BaseDirectory,$"{typeof(Startup).Assembly.GetName().Name}.xml");
         c.IncludeXmlComments(filePath, true);
     });
 ```
@@ -75,6 +75,11 @@ app.UseRapiDocUI(c =>
 {
     c.RoutePrefix = ""; // serve the UI at root
     c.SwaggerEndpoint("/v1/api-docs", "V1 Docs");
+    c.GenericRapiConfig = new GenericRapiConfig()
+    {
+        RenderStyle="focused",
+        Theme="light"
+    };
 });
 
 app.UseEndpoints(endpoints =>
@@ -83,6 +88,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapSwagger("{documentName}/api-docs");
 });
 ```
+[https://mrin9.github.io/RapiDoc/api.html](https://mrin9.github.io/RapiDoc/api.html) GenericRapiConfig 配置项参考此文档
 即可使用 RapiDoc
 
 ### 🔎 效果图

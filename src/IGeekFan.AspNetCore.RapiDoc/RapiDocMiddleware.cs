@@ -37,10 +37,10 @@ namespace IGeekFan.AspNetCore.RapiDoc
 
             _staticFileMiddleware = CreateStaticFileMiddleware(next, hostingEnv, loggerFactory, options);
 
-            _jsonSerializerOptions = new JsonSerializerOptions();
-            _jsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-            _jsonSerializerOptions.IgnoreNullValues = true;
-            _jsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, false));
+            _jsonSerializerOptions = new JsonSerializerOptions() 
+            {
+                AllowTrailingCommas = true,
+            };
         }
 
         public async Task Invoke(HttpContext httpContext)
@@ -141,7 +141,8 @@ namespace IGeekFan.AspNetCore.RapiDoc
                 { "%(HeadContent)", _options.HeadContent },
                 { "%(Url)", _options.ConfigObject.Urls.First().Url },
                 { "%(ConfigObject)", JsonSerializer.Serialize(_options.ConfigObject, _jsonSerializerOptions) },
-                { "%(OAuthConfigObject)", JsonSerializer.Serialize(_options.OAuthConfigObject, _jsonSerializerOptions) }
+                { "%(OAuthConfigObject)", JsonSerializer.Serialize(_options.OAuthConfigObject, _jsonSerializerOptions) },
+                { "%(GenericRapiConfig)", JsonSerializer.Serialize(_options.GenericRapiConfig, _jsonSerializerOptions) }
             };
         }
     }

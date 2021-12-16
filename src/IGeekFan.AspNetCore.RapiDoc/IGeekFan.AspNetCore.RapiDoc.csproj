@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;netcoreapp3.1;net5.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
 		<Description>Middleware to expose an embedded version of the RapiDoc from an ASP.NET Core application</Description>
 		<NoWarn>$(NoWarn);1591</NoWarn>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -33,14 +33,14 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
 	</ItemGroup>
 	
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
-		<PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.1.0" />
-		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.0" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="2.1.0" />
-		<PackageReference Include="System.Text.Json" Version="4.6.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.2.2" />
+		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0" />
+		<PackageReference Include="System.Text.Json" Version="6.0.0" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' ">
@@ -54,12 +54,12 @@
 		 <!--Exclude="**/**/*/*.map;**/**/*/*.json;**/**/*/*.html;**/**/*/*.md"--> 
 	</ItemGroup>
 
-	<Target Name="NpmInstall" BeforeTargets="Build">
+	<!--<Target Name="NpmInstall" BeforeTargets="Build">
 		<Exec Command="npm install" EnvironmentVariables="PATH=$(Path.Replace(';', '%3B'))" ContinueOnError="true">
 			<Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
 		</Exec>
 		<Error Condition="'$(ErrorCode)' != '0'" Text="Node.js/npm is required to build this project. To continue, please install Node.js from https://nodejs.org/ or Visual Studio Installer, and then restart your command prompt or IDE." />
-	</Target>
+	</Target>-->
 
 	
 </Project>

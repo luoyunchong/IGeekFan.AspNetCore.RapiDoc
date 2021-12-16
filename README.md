@@ -1,7 +1,7 @@
 <div align="center">
 <h1 align="center"> <img alt="MrinDoc logo" src="docs/images/logo.png" width="40px" />  IGeekFan.AspNetCore.RapiDoc </h1>
 
-**[RapiDoc](https://github.com/mrin9/RapiDoc)** Custom Element for Open-API spec viewing ，Support .NET Core3.1 、.NET Standard2.0、.NET5.0。
+**[RapiDoc](https://github.com/mrin9/RapiDoc)** Custom Element for Open-API spec viewing ，Support .NET Core3.1 、.NET Standard2.0、.NET5.0、.NET6.0。
 
 
 [![nuget](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.RapiDoc.svg?style=flat-square)](https://www.nuget.org/packages/IGeekFan.AspNetCore.RapiDoc)
@@ -69,7 +69,7 @@ using IGeekFan.AspNetCore.RapiDoc;
    services.AddSwaggerGen(c =>
     {
         c.SwaggerDoc("v1",new OpenApiInfo{Title = "API V1",Version = "v1"});
-        var filePath = Path.Combine(System.AppContext.BaseDirectory $"{typeof(Startup).Assembly.GetName().Name}.xml");
+        var filePath = Path.Combine(System.AppContext.BaseDirectory,$"{typeof(Startup).Assembly.GetName().Name}.xml");
         c.IncludeXmlComments(filePath, true);
     });
 ```
@@ -83,6 +83,11 @@ app.UseRapiDocUI(c =>
 {
     c.RoutePrefix = ""; // serve the UI at root
     c.SwaggerEndpoint("/v1/api-docs", "V1 Docs");
+    c.GenericRapiConfig = new GenericRapiConfig()
+    {
+        RenderStyle="focused",
+        Theme="light"
+    };
 });
 
 app.UseEndpoints(endpoints =>
@@ -91,7 +96,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapSwagger("{documentName}/api-docs");
 });
 ```
-
+[https://mrin9.github.io/RapiDoc/api.html](https://mrin9.github.io/RapiDoc/api.html) GenericRapiConfig Configuration items refer to this document
 
 ### 🔎 Views
 Run Project，Open WebSite https://localhost:5001/index.html#/home

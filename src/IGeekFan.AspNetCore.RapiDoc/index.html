@@ -6,46 +6,98 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes">
     <script type="module" src="rapidoc-min.js"></script>
     %(HeadContent)
+    <style>
+        rapi-doc {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
-    <noscript><strong>We're sorry but RapiDoc doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript>
-    <rapi-doc id="thedoc" 
-              spec-url="%(Url)"
-              sort-tags="true"
-              allow-server-selection="false" 
-              show-header="true" 
-              show-info="true"
-              theme="dark"
-              allow-try="true"
-              sort-endpoints-by="summary"
-              allow-api-list-style-selection="false"
-              regular-font="Open Sans"
-              schema-style="tree" 
-              render-style="focused" 
-              default-schema-tab="model" 
-              schema-expand-level="3"
-              >
-        <div slot="nav-logo" style="width:100%; display: flex;justify-content: center;">
+    <rapi-doc id="thedoc" spec-url="%(Url)">
+        <!--sort-tags="true"
+        allow-server-selection="false"
+        show-header="true"
+        show-info="true"
+        theme="dark"
+        allow-try="true"
+        sort-endpoints-by="summary"
+        allow-api-list-style-selection="false"
+        regular-font="Open Sans"
+        schema-style="tree"
+        render-style="focused"
+        default-schema-tab="model"
+        schema-expand-level="3"-->
+        <!--<div slot="nav-logo" style="width:100%; display: flex;justify-content: center;">
             <button class="btn medium" onclick="document.getElementById('thedoc').setAttribute('schema-style', 'table')">Table</button>
             <button class="btn medium" onclick="document.getElementById('thedoc').setAttribute('schema-style', 'tree')">Tree</button>
-        </div>
-        <div slot="get-/test" style="width:100%; display: flex;justify-content: center;">
-            <b style="color:red">We're sorry</b>
-        </div>
+        </div>-->
     </rapi-doc>
+    <noscript><strong>We're sorry but RapiDoc doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript>
     <script>
-
-
-        //window.onload = function () {
-        //    var configObject = JSON.parse('%(ConfigObject)');
-        //    var oauthConfigObject = JSON.parse('%(OAuthConfigObject)');
-
-        //    window.addEventListener('DOMContentLoaded', (event) => {
-            
-
-        //    });
-        //}
+        window.onload = function () {
+            //var configObject = JSON.parse('%(ConfigObject)');
+            //var oauthConfigObject = JSON.parse('%(OAuthConfigObject)');
+            var genericRapiConfig = JSON.parse('%(GenericRapiConfig)');
+            var thedoc = document.getElementById('thedoc')
+            if (genericRapiConfig.SpecUrl != "" && genericRapiConfig.SpecUrl != null) {
+                thedoc.setAttribute('spec-url', genericRapiConfig.SpecUrl);
+            }
+            if (genericRapiConfig.RoutePrefix != "" && genericRapiConfig.RoutePrefix != null) {
+               thedoc.setAttribute('route-prefix', genericRapiConfig.RoutePrefix);
+            }
+            thedoc.setAttribute('update-route', genericRapiConfig.UpdateRoute);
+            thedoc.setAttribute('sort-tags', genericRapiConfig.SortTags);
+            thedoc.setAttribute('sort-endpoints-by', genericRapiConfig.SortEndpointsBy);
+            thedoc.setAttribute('heading-text', genericRapiConfig.HeadingText);
+            thedoc.setAttribute('goto-path', genericRapiConfig.GotoPath);
+            thedoc.setAttribute('fill-request-fields-with-example', genericRapiConfig.FillRequestFieldsWithExample);
+            thedoc.setAttribute('theme', genericRapiConfig.Theme);
+            thedoc.setAttribute('bg-color', genericRapiConfig.BgColor);
+            thedoc.setAttribute('text-color', genericRapiConfig.TextColor);
+            thedoc.setAttribute('header-color', genericRapiConfig.HeaderColor);
+            thedoc.setAttribute('primary-color', genericRapiConfig.PrimaryColor);
+            thedoc.setAttribute('load-fonts', genericRapiConfig.LoadFonts);
+            thedoc.setAttribute('regular-font', genericRapiConfig.RegularFont);
+            thedoc.setAttribute('mono-font', genericRapiConfig.MonoFont);
+            thedoc.setAttribute('font-size', genericRapiConfig.FontSize);
+            thedoc.setAttribute('use-path-in-nav-bar', genericRapiConfig.UsePathInNavBar);
+            thedoc.setAttribute('nav-bg-color', genericRapiConfig.NavBgColor);
+            thedoc.setAttribute('nav-text-color', genericRapiConfig.NavTextColor);
+            thedoc.setAttribute('nav-hover-bg-color', genericRapiConfig.NavHoverBgColor);
+            thedoc.setAttribute('nav-hover-text-color', genericRapiConfig.NavHoverTextColor);
+            thedoc.setAttribute('nav-accent-color', genericRapiConfig.NavAccentColor);
+            thedoc.setAttribute('nav-item-spacing', genericRapiConfig.NavItemSpacing);
+            thedoc.setAttribute('layout', genericRapiConfig.Layout);
+            thedoc.setAttribute('render-style', genericRapiConfig.RenderStyle);
+            thedoc.setAttribute('on-nav-tag-click', genericRapiConfig.OnNavTagClick);
+            thedoc.setAttribute('schema-style', genericRapiConfig.SchemaStyle);
+            thedoc.setAttribute('schema-expand-level', genericRapiConfig.SchemaExpandLevel);
+            thedoc.setAttribute('schema-description-expanded', genericRapiConfig.SchemaDescriptionExpanded);
+            thedoc.setAttribute('schema-hide-read-only', genericRapiConfig.SchemaHideReadOnly);
+            thedoc.setAttribute('schema-hide-write-only', genericRapiConfig.SchemaHideWriteOnly);
+            thedoc.setAttribute('default-schema-tab', genericRapiConfig.DefaultSchemaTab);
+            thedoc.setAttribute('response-area-height', genericRapiConfig.ResponseAreaHeight);
+            thedoc.setAttribute('show-info', genericRapiConfig.ShowInfo);
+            thedoc.setAttribute('info-description-headings-in-navbar', genericRapiConfig.InfoDescriptionHeadingsInNavbar);
+            thedoc.setAttribute('show-components', genericRapiConfig.ShowComponents);
+            thedoc.setAttribute('show-header', genericRapiConfig.ShowHeader);
+            thedoc.setAttribute('allow-authentication', genericRapiConfig.AllowAuthentication);
+            thedoc.setAttribute('allow-spec-url-load', genericRapiConfig.AllowSpecUrlLoad);
+            thedoc.setAttribute('allow-spec-file-load', genericRapiConfig.AllowSpecFileLoad);
+            thedoc.setAttribute('allow-spec-file-download', genericRapiConfig.AllowSpecFileDownload);
+            thedoc.setAttribute('allow-search', genericRapiConfig.AllowSearch);
+            thedoc.setAttribute('allow-advanced-search', genericRapiConfig.AllowAdvancedSearch);
+            thedoc.setAttribute('allow-try', genericRapiConfig.AllowTry);
+            thedoc.setAttribute('allow-server-selection', genericRapiConfig.AllowServerSelection);
+            thedoc.setAttribute('allow-schema-description-expand-toggle', genericRapiConfig.AllowSchemaDescriptionExpandToggle);
+            thedoc.setAttribute('server-url', genericRapiConfig.ServerUrl);
+            thedoc.setAttribute('default-api-server', genericRapiConfig.DefaultApiServer);
+            thedoc.setAttribute('api-key-name', genericRapiConfig.ApiKeyName);
+            thedoc.setAttribute('api-key-location', genericRapiConfig.ApiKeyLocation);
+            thedoc.setAttribute('api-key-value', genericRapiConfig.ApiKeyValue);
+            thedoc.setAttribute('fetch-credentials', genericRapiConfig.FetchCredentials);
+        }
     </script>
 </body>
 
