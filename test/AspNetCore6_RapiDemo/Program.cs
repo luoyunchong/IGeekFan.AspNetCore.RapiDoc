@@ -24,7 +24,8 @@ builder.Services.AddSwaggerGen(c =>
 
 
 
-builder.Services.Configure<RapiDocOptions>(c =>{
+builder.Services.Configure<RapiDocOptions>(c =>
+{
     builder.Configuration.Bind("RapiDoc", c);
 });
 
@@ -43,8 +44,9 @@ if (app.Environment.IsDevelopment())
         //This Config Higher priority
         c.GenericRapiConfig = new GenericRapiConfig()
         {
-            RenderStyle= "focused",
-            Theme="light"
+            RenderStyle = "read",
+            Theme = "light",//light | dark
+            SchemaStyle = "table"////tree | table
         };
 
     });

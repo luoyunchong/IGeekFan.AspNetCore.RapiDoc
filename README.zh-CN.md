@@ -25,28 +25,30 @@
 - [Basic](https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/blob/master/test/Basic)
 - [RapiDocDemo](https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/blob/master/test/RapiDocDemo)
 - [OAuth2Integration](https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/blob/master/test/WebSites/OAuth2Integration)
-
+- [ASPNET Core 6](https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/blob/master/test/AspNetCore6_RapiDemo)
 ## 📚 快速开始
 
 ### 🚀安装包
 
-以下为使用Swashbuckle.AspNetCore.Swagger底层组件
+你需要安装`Swashbuckle.AspNetCore.Swagger`相关包。
 
-1.Install the standard Nuget package into your ASP.NET Core application.
+1.通过Nuget或CLI将包安装到ASP.NET Core应用中,如下：
 
 ```
 Package Manager : 
 
+Install-Package Swashbuckle.AspNetCore.Swagger
+Install-Package Swashbuckle.AspNetCore.SwaggerGen
 Install-Package IGeekFan.AspNetCore.RapiDoc
-
-OR
 
 CLI :
 
+dotnet add package Swashbuckle.AspNetCore.Swagger
+dotnet add package Swashbuckle.AspNetCore.SwaggerGen
 dotnet add package IGeekFan.AspNetCore.RapiDoc
 ```
 
-2.In the ConfigureServices method of Startup.cs, register the Swagger generator, defining one or more Swagger documents.
+2.在  Startup.cs 中 的ConfigureServices 方法, 注入 Swagger generator服务，用于配置我们的swagger文档
 
 ```
 using Microsoft.AspNetCore.Mvc.Controllers
@@ -78,7 +80,7 @@ app.UseRapiDocUI(c =>
     c.GenericRapiConfig = new GenericRapiConfig()
     {
         RenderStyle="focused",
-        Theme="light"
+        Theme="light", //light,dark,focused   
     };
 });
 
@@ -144,6 +146,76 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
            c.SwaggerEndpoint("/swagger/v1/swagger.json");
       });
 }
+```
+
+### IGeekFan.AspNetCore.RapiDoc.Extra
+只有一个类，通过`Filter`实现方法上显示标签
+
+安装包
+```
+dotnet add package IGeekFan.AspNetCore.RapiDoc.Extra
+```
+
+在AddSwaggerGen服务中增加`RapiDocLableOperationFilter`过滤器、
+
+当然，你需要引用命名空间`IGeekFan.AspNetCore.RapiDoc.Extra`
+
+```diff
+builder.Services.AddSwaggerGen(c =>
+{
++   c.OperationFilter<RapiDocLableOperationFilter>();
+    var filePath = Path.Combine(System.AppContext.BaseDirectory, $"{typeof(Program).Assembly.GetName().Name}.xml");
+    c.IncludeXmlComments(filePath, true);
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "AspNetCore6_RapiDemo", Version = "v1" });
+});
+```
+
+
+在Controller
+```diff
++   [RapiDocLabel("Core Api")]
++   [RapiDocLabel("Test",RapiDocColor.RED)]
+    [HttpGet(Name = "GetWeatherForecast")]
+    public IEnumerable<WeatherForecast> Get()
+    {
+        return null;
+    }
+```
+效果图如下
+
+![docs/images/light-badges.png](docs/images/light-badges.png)
+
+- 通过appsettings.json配置
+
+```csharp
+builder.Services.Configure<RapiDocOptions>(c =>{
+    builder.Configuration.Bind("RapiDoc", c);
+});
+```
+
+aoosettings.json
+```json
+ "RapiDoc": {
+    "RoutePrefix": "swagger",
+    "DocumentTitle": "ASPNET CORE 6 RAPI DOC",
+    "GenericRapiConfig": {
+      "Theme": "dark"
+    }
+  }
+```
+其中 通过中间件的配置优先级更高。所有配置项都可以在项目中的appsettings.json中配置，请参考 [https://mrin9.github.io/RapiDoc/api.html](https://mrin9.github.io/RapiDoc/api.html)
+```csharp
+ app.UseRapiDocUI(c =>
+    {
+        //This Config Higher priority
+        c.GenericRapiConfig = new GenericRapiConfig()
+        {
+            RenderStyle= "read",//read | view | focused
+            Theme="light",//light | dark
+            SchemaStyle= "table"//tree | table
+        };
+
+    });
 ```
 
 
