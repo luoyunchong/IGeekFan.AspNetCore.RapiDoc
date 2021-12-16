@@ -4,7 +4,8 @@
 **[RapiDoc](https://github.com/mrin9/RapiDoc)** Custom Element for Open-API spec viewing ，Support .NET Core3.1 、.NET Standard2.0、.NET5.0、.NET6.0。
 
 
-[![nuget](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.RapiDoc.svg?style=flat-square)](https://www.nuget.org/packages/IGeekFan.AspNetCore.RapiDoc)
+[![RapiDoc](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.RapiDoc.svg?style=flat-square&color=fedcba)](https://www.nuget.org/packages/IGeekFan.AspNetCore.RapiDoc)
+[![RapiDoc.Extra](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.RapiDoc.Extra.svg?style=flat-square)](https://www.nuget.org/packages/IGeekFan.AspNetCore.RapiDoc.Extra)
 [![stats](https://img.shields.io/nuget/dt/IGeekFan.AspNetCore.RapiDoc.svg?style=flat-square)](https://www.nuget.org/stats/packages/IGeekFan.AspNetCore.RapiDoc?groupby=Version) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/master/LICENSE)
 <p>
     <span>English</span> |  

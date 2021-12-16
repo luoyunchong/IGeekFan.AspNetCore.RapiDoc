@@ -5,7 +5,8 @@
 
 一个实现了Swagger 2.0 and OpenAPI 3.0，适用于任何框架或没有框架的API文档.我将其集成到 AspNetCore 中。更多特性，请参考 **[RapiDoc](https://github.com/mrin9/RapiDoc) README**
 
-[![nuget](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.RapiDoc.svg?style=flat-square)](https://www.nuget.org/packages/IGeekFan.AspNetCore.RapiDoc)
+[![RapiDoc](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.RapiDoc.svg?style=flat-square&color=fedcba)](https://www.nuget.org/packages/IGeekFan.AspNetCore.RapiDoc)
+[![RapiDoc.Extra](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.RapiDoc.Extra.svg?style=flat-square)](https://www.nuget.org/packages/IGeekFan.AspNetCore.RapiDoc.Extra)
 [![stats](https://img.shields.io/nuget/dt/IGeekFan.AspNetCore.RapiDoc.svg?style=flat-square)](https://www.nuget.org/stats/packages/IGeekFan.AspNetCore.RapiDoc?groupby=Version) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/master/LICENSE)
 
 <p>
