@@ -3,10 +3,8 @@
 
 **[RapiDoc](https://github.com/mrin9/RapiDoc)** Custom Element for Open-API spec viewing ，Support .NET Core3.1 、.NET Standard2.0、.NET5.0、.NET6.0。
 
-
-[![RapiDoc](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.RapiDoc.svg?style=flat-square&color=fedcba)](https://www.nuget.org/packages/IGeekFan.AspNetCore.RapiDoc)
-[![RapiDoc.Extra](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.RapiDoc.Extra.svg?style=flat-square)](https://www.nuget.org/packages/IGeekFan.AspNetCore.RapiDoc.Extra)
-[![stats](https://img.shields.io/nuget/dt/IGeekFan.AspNetCore.RapiDoc.svg?style=flat-square)](https://www.nuget.org/stats/packages/IGeekFan.AspNetCore.RapiDoc?groupby=Version) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/master/LICENSE)
+[![.NET IDE Rider](https://img.shields.io/static/v1?style=float&logo=rider&label=Rider&message=jetbrains&color=red)](https://www.jetbrains.com/rider/)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/master/LICENSE)
 <p>
     <span>English</span> |  
     <a href="README.zh-CN.md">中文</a>
@@ -20,6 +18,15 @@ An API document that implements swagger 2.0 and OpenAPI 3.0. I integrate it into
 - Works with any framework or with no framework
 - Allows making API calls. And More....
 - For more features, please refer to **[RapiDoc](https://github.com/mrin9/RapiDoc) README**
+
+## Nuget Packages
+
+Package name                              | Version                     | Downloads
+------------------------------------------|-----------------------------|-------------
+`IGeekFan.AspNetCore.RapiDoc` | [![NuGet](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.RapiDoc.svg?style=flat-square&label=nuget&color=fedcba)](https://www.nuget.org/packages/IGeekFan.AspNetCore.RapiDoc/) | ![downloads](https://img.shields.io/nuget/dt/IGeekFan.AspNetCore.RapiDoc.svg)
+`IGeekFan.AspNetCore.RapiDoc.Extra` | [![NuGet](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.RapiDoc.Extra.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/IGeekFan.AspNetCore.RapiDoc.Extra/) | ![downloads](https://img.shields.io/nuget/dt/IGeekFan.AspNetCore.RapiDoc.Extra.svg)
+
+ 
 ## Dependencies
 ### [RapiDoc](https://github.com/mrin9/RapiDoc)
 - rapidoc^(version) [https://www.npmjs.com/package/rapidoc](https://www.npmjs.com/package/rapidoc)
