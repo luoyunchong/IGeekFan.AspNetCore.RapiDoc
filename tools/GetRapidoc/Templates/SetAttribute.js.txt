@@ -1,0 +1,7 @@
+﻿var genericRapiConfig = JSON.parse('%(GenericRapiConfig)');
+var thedoc = document.getElementById('thedoc')
+{{~ for prop in apilist ~}}
+thedoc.setAttribute('{{prop.Name}}', genericRapiConfig.{{prop.NamePascalize}});
+{{~ if !for.last ~}}
+{{~ end ~}}
+{{~ end ~}}

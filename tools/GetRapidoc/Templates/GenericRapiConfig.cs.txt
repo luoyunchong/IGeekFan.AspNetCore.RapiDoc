@@ -1,0 +1,17 @@
+﻿using System;
+using Newtonsoft.Json;
+namespace GetRapidoc
+{
+    public class GenericRapiConfig
+    {
+        {{~ for prop in apilist ~}}
+        /// <summary>
+        /// {{ prop.Desc }}
+        /// </summary>
+        public {{ prop.Type}} {{ prop.NamePascalize }} { get; set; }{{prop.DefaultValFormat}}
+        {{~ if !for.last ~}}
+        
+        {{~ end ~}}
+        {{~ end ~}}
+    }
+}
