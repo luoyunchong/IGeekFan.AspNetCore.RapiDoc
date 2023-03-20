@@ -159,6 +159,14 @@ namespace OAuth2Integration
                     c.OAuthAppName("test-app");
                     c.OAuthScopeSeparator(" ");
                     c.OAuthUsePkce();
+                    //https://mrin9.github.io/RapiDoc/api.html
+                    //This Config Higher priority
+                    c.GenericRapiConfig = new GenericRapiConfig()
+                    {
+                        RenderStyle = "read",
+                        Theme = "light",//light | dark
+                        SchemaStyle = "table"////tree | table
+                    };
                 });
 
                 resourceServer.UseSwaggerUI(c =>

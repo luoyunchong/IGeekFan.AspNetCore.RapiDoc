@@ -84,10 +84,13 @@ app.UseRapiDocUI(c =>
 {
     c.RoutePrefix = ""; // serve the UI at root
     c.SwaggerEndpoint("/v1/api-docs", "V1 Docs");
+    //https://mrin9.github.io/RapiDoc/api.html
+    //This Config Higher priority
     c.GenericRapiConfig = new GenericRapiConfig()
     {
-        RenderStyle="focused",
-        Theme="light", //light,dark,focused   
+        RenderStyle = "read",
+        Theme = "light",//light | dark
+        SchemaStyle = "table"////tree | table
     };
 });
 

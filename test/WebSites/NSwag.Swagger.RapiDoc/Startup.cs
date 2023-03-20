@@ -51,6 +51,14 @@ namespace NSwag.Swagger.Knife4jUI
             {
                 c.RoutePrefix = ""; // serve the UI at root
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1 Docs");
+                //https://mrin9.github.io/RapiDoc/api.html
+                //This Config Higher priority
+                c.GenericRapiConfig = new GenericRapiConfig()
+                {
+                    RenderStyle = "read",
+                    Theme = "light",//light | dark
+                    SchemaStyle = "table"////tree | table
+                };
             });
     
 
