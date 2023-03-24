@@ -73,7 +73,7 @@ namespace RapiDocDemo
                 {
                     RenderStyle = "read",
                     Theme = "light",//light | dark
-                    SchemaStyle = "table"////tree | table
+                    SchemaStyle = "table",////tree | table
                 };
             });
 

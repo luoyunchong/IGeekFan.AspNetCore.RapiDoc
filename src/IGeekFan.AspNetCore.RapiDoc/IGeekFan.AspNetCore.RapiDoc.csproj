@@ -17,8 +17,8 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Copyright>MIT License</Copyright>
 		<PackageLicenseExpression></PackageLicenseExpression>
-		<AssemblyVersion>0.0.6.0</AssemblyVersion>
-		<FileVersion>0.0.6.0</FileVersion>
+		<AssemblyVersion>0.0.7.0</AssemblyVersion>
+		<FileVersion>0.0.7.0</FileVersion>
 		<AssemblyName>IGeekFan.AspNetCore.RapiDoc</AssemblyName>
 		<PackageLicenseFile></PackageLicenseFile>
 	</PropertyGroup>
@@ -54,12 +54,12 @@
 		 <!--Exclude="**/**/*/*.map;**/**/*/*.json;**/**/*/*.html;**/**/*/*.md"--> 
 	</ItemGroup>
 
-	<Target Name="NpmInstall" BeforeTargets="Build">
+	<!--<Target Name="NpmInstall" BeforeTargets="Build">
 		<Exec Command="npm install" EnvironmentVariables="PATH=$(Path.Replace(';', '%3B'))" ContinueOnError="true">
 			<Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
 		</Exec>
 		<Error Condition="'$(ErrorCode)' != '0'" Text="Node.js/npm is required to build this project. To continue, please install Node.js from https://nodejs.org/ or Visual Studio Installer, and then restart your command prompt or IDE." />
-	</Target>
+	</Target>-->
 
 	
 </Project>

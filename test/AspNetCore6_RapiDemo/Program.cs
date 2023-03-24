@@ -46,7 +46,8 @@ if (app.Environment.IsDevelopment())
         {
             RenderStyle = "read",
             Theme = "light",//light | dark
-            SchemaStyle = "table"////tree | table
+            SchemaStyle = "table",////tree | table
+            ShowMethodInNavBar = "as-colored-text"
         };
 
     });

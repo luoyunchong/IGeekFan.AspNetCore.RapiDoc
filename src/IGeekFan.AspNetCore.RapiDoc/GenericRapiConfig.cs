@@ -118,7 +118,7 @@ namespace IGeekFan.AspNetCore.RapiDoc
         /// shows API Method names in the navigation bar (if you customized nav-background make sure there is a proper contrast)
         /// &nbsp;|&nbsp; Example
         /// </summary>
-        public bool ShowMethodInNavBar { get; set; } = false;
+        public string ShowMethodInNavBar { get; set; } = "false";
 
         /// <summary>
         /// Allowed: true | false
