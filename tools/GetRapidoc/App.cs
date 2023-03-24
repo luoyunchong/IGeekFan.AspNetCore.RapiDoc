@@ -28,8 +28,8 @@ namespace GetRapidoc
 { "Accept", "text /html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"},
 { "Accept-Encoding", "gzip, deflate"},
 { "Accept-Language", "zh-CN,zh;q=0.9" },
-{ "Host", "mrin9.github.io"},
-{ "Referer","https://mrin9.github.io/RapiDoc/api.html"},
+{ "Host", "rapidocweb.com"},
+{ "Referer","https://rapidocweb.com/api.html"},
 { "Cache-Control"," max-age=0"},
 { "Connection"," keep-alive"},
 //{ "Proxy-Connection"," keep-alive"},
@@ -37,7 +37,7 @@ namespace GetRapidoc
 { "User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"}
             };
 
-            string url = "https://mrin9.github.io/RapiDoc/api.html";
+            string url = "https://rapidocweb.com/api.html";
             HtmlWeb web = Util.GetHtmlWeb(headers);
             HtmlDocument htmlDoc = web.Load(url);
             HtmlNodeCollection tables = htmlDoc.DocumentNode.SelectSingleNode($"//div[@class='table-block']").SelectNodes("table[@class='m-table']");
