@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace IGeekFan.AspNetCore.RapiDoc
 {
     /// <summary>
@@ -15,7 +14,8 @@ namespace IGeekFan.AspNetCore.RapiDoc
         public string SpecUrl { get; set; } = "";
 
         /// <summary>
-        /// Allowed: true | false setting true will update the url on browser's location whenever a new section is visited either by scrolling or clicking
+        /// Allowed: true | false 
+        /// setting true will update the url on browser's location whenever a new section is visited either by scrolling or clicking
         /// </summary>
         public bool UpdateRoute { get; set; } = true;
 
@@ -53,10 +53,16 @@ namespace IGeekFan.AspNetCore.RapiDoc
         public string GotoPath { get; set; } = "";
 
         /// <summary>
-        /// Allowed: true | false 
-        ///Request fields will be filled with example value (if provided in spec)
+        /// Allowed: true | false  
+        /// Request fields will be filled with example value (if provided in spec)
         /// </summary>
         public bool FillRequestFieldsWithExample { get; set; } = true;
+
+        /// <summary>
+        /// Allowed: true | false  
+        /// Authentication will be persisted to localStorage
+        /// </summary>
+        public bool PersistAuth { get; set; } = false;
 
         /// <summary>
         /// Allowed: light | dark
@@ -108,6 +114,13 @@ namespace IGeekFan.AspNetCore.RapiDoc
         public string FontSize { get; set; } = "default";
 
         /// <summary>
+        /// Allowed: false | as-plain-text | as-colored-text | as-colored-block
+        /// shows API Method names in the navigation bar (if you customized nav-background make sure there is a proper contrast)
+        /// &nbsp;|&nbsp; Example
+        /// </summary>
+        public bool ShowMethodInNavBar { get; set; } = false;
+
+        /// <summary>
         /// Allowed: true | false
         /// set true to show API paths in the navigation bar instead of summary/description
         /// &nbsp;|&nbsp; Example
@@ -136,9 +149,19 @@ namespace IGeekFan.AspNetCore.RapiDoc
         public string NavHoverTextColor { get; set; }
 
         /// <summary>
-        /// Current selected item indicator
+        /// Accent color used in navigtion Bar (such as background of active navigation item)
         /// </summary>
         public string NavAccentColor { get; set; }
+
+        /// <summary>
+        /// Text color used in navigtion bar selected items
+        /// </summary>
+        public string NavAccentTextColor { get; set; }
+
+        /// <summary>
+        /// Navigation active item indicator styles
+        /// </summary>
+        public string NavActiveItemMarker { get; set; } = "left-bar";
 
         /// <summary>
         /// Allowed: default | compact | relaxed
@@ -146,6 +169,13 @@ namespace IGeekFan.AspNetCore.RapiDoc
         /// &nbsp;|&nbsp; Example
         /// </summary>
         public string NavItemSpacing { get; set; } = "default";
+
+        /// <summary>
+        /// Allowed: expand-collapse | show-description -
+        /// applies only to focused render-style. It determinses the behavior of clicking on a Tag in navigation bar.
+        /// It can either expand-collapse the tag or take you to the tag's description page.
+        /// </summary>
+        public string OnNavTagClick { get; set; } = "expand-collapse";
 
         /// <summary>
         /// Allowed: row | column
@@ -176,62 +206,6 @@ namespace IGeekFan.AspNetCore.RapiDoc
         /// 'read' - more suitable for reading 'view' more friendly for quick exploring
         /// </summary>
         public string RenderStyle { get; set; } = "read";
-
-        /// <summary>
-        /// Allowed: expand-collapse | show-description -
-        /// applies only to focused render-style. It determinses the behavior of clicking on a Tag in navigation bar.
-        /// It can either expand-collapse the tag or take you to the tag's description page.
-        /// </summary>
-        public string OnNavTagClick { get; set; } = "expand-collapse";
-
-        /// <summary>
-        /// Allowed: tree | table -
-        /// Two different ways to display object-schemas in the responses and request bodies
-        /// &nbsp;|&nbsp; Example
-        /// </summary>
-        public string SchemaStyle { get; set; } = "tree";
-
-        /// <summary>
-        /// Schemas are expanded by default, use this attribute to control how many levels in the schema should be expanded
-        /// &nbsp;|&nbsp; Example
-        /// </summary>
-        public string SchemaExpandLevel { get; set; } = "999";
-
-        /// <summary>
-        /// Allowed: true | false -
-        /// Constraint and descriptions information of fields in the schema are collapsed to show only the first line.
-        /// Set it to true if you want them to fully expanded
-        /// </summary>
-        public bool SchemaDescriptionExpanded { get; set; } = false;
-
-        /// <summary>
-        /// Allowed: always | never | (combination of: post | put | patch) -
-        /// read-only fileds in request schemas is  always  hidden but are shown in response.
-        /// 
-        /// If you do not want to hide read-only fields or hide them based on action you can configure this setting to 'never' or any combination of post | put | patch to indicate where to hide
-        /// 
-        /// Schemas in response section is not affected by this setting.
-        /// &nbsp;|&nbsp; Example
-        /// </summary>
-        public string SchemaHideReadOnly { get; set; } = "always";
-
-        /// <summary>
-        /// Allowed: always | never -
-        /// write-only fileds in response schemas is  always  hidden but are shown in request.
-        /// 
-        /// If you do not want to hide write-only fields then set to 'never'
-        /// 
-        /// Schemas in request section is not affected by this setting.
-        /// &nbsp;|&nbsp; Example
-        /// </summary>
-        public string SchemaHideWriteOnly { get; set; } = "always";
-
-        /// <summary>
-        /// Allowed: model | example -
-        /// The schemas are displayed in two tabs - Model and Example.
-        /// This option allows you to pick the default tab that you would like to be active
-        /// </summary>
-        public string DefaultSchemaTab { get; set; } = "model";
 
         /// <summary>
         /// Allowed: valid css height value such as 400px, 50%, 60vh etc -
@@ -314,6 +288,11 @@ namespace IGeekFan.AspNetCore.RapiDoc
         public bool AllowTry { get; set; } = true;
 
         /// <summary>
+        /// If set to 'true', the cURL snippet is displayed between the request and the response without clicking on TRY &nbsp;|&nbsp; Example
+        /// </summary>
+        public bool ShowCurlBeforeTry { get; set; } = false;
+
+        /// <summary>
         /// If set to 'false', user will not be able to see or select API server (Server List will be hidden, however users will be able to see the server url near the 'TRY' button, to know in advance where the TRY will send the request).
         /// The URL specified in the server-url attribute will be used if set, else the first server in the API specification file will be used.
         /// </summary>
@@ -324,6 +303,55 @@ namespace IGeekFan.AspNetCore.RapiDoc
         /// allow or hide the ability to expand/collapse field descriptions in the schema
         /// </summary>
         public bool AllowSchemaDescriptionExpandToggle { get; set; } = true;
+
+        /// <summary>
+        /// Allowed: tree | table -
+        /// Two different ways to display object-schemas in the responses and request bodies
+        /// &nbsp;|&nbsp; Example
+        /// </summary>
+        public string SchemaStyle { get; set; } = "tree";
+
+        /// <summary>
+        /// Schemas are expanded by default, use this attribute to control how many levels in the schema should be expanded
+        /// &nbsp;|&nbsp; Example
+        /// </summary>
+        public string SchemaExpandLevel { get; set; } = "999";
+
+        /// <summary>
+        /// Allowed: true | false -
+        /// Constraint and descriptions information of fields in the schema are collapsed to show only the first line.
+        /// Set it to true if you want them to fully expanded
+        /// </summary>
+        public bool SchemaDescriptionExpanded { get; set; } = false;
+
+        /// <summary>
+        /// Allowed: default | never  -
+        /// default will show read-only schema attributes in Responses, and in Requests of Webhook / Callback
+        /// 
+        /// If you do not want to hide read-only fields in schema then you may set it to 'never'
+        /// 
+        /// Note:This do not effect example generation.
+        /// &nbsp;|&nbsp; Example
+        /// </summary>
+        public string SchemaHideReadOnly { get; set; } = "default";
+
+        /// <summary>
+        /// Allowed: default | never  -
+        /// default will show write-only schema attributes in Requests, and in Responses of Webhook / Callback
+        /// 
+        /// If you do not want to hide write-only fields in schema then you may set it to 'never'
+        /// 
+        /// Note:This do not effect example generation.
+        /// &nbsp;|&nbsp; Example
+        /// </summary>
+        public string SchemaHideWriteOnly { get; set; } = "default";
+
+        /// <summary>
+        /// Allowed: schema | example -
+        /// The schemas are displayed in two tabs - Model and Example.
+        /// This option allows you to pick the default tab that you would like to be active
+        /// </summary>
+        public string DefaultSchemaTab { get; set; } = "model";
 
         /// <summary>
         /// OpenAPI spec has a provision for providing the server url. The UI will list all the server URLs provided in the spec.
@@ -364,5 +392,4 @@ namespace IGeekFan.AspNetCore.RapiDoc
         /// </summary>
         public string FetchCredentials { get; set; } = "";
     }
-
 }
