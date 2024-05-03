@@ -31,7 +31,7 @@ namespace RapiDocDemo.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<WeatherForecast> Get([FromQuery] WeatherForecast query)
         {
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

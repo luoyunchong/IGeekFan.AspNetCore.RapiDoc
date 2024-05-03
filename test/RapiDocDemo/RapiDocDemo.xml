@@ -9,7 +9,7 @@
             This is api docs
             </summary>
         </member>
-        <member name="M:RapiDocDemo.Controllers.WeatherForecastController.Get">
+        <member name="M:RapiDocDemo.Controllers.WeatherForecastController.Get(RapiDocDemo.WeatherForecast)">
             <summary>
             this is Get method
             </summary>

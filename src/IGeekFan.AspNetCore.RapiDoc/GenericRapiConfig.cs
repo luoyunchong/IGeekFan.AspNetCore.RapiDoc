@@ -391,5 +391,7 @@ namespace IGeekFan.AspNetCore.RapiDoc
         /// that are sent by the browser
         /// </summary>
         public string FetchCredentials { get; set; } = "";
+
+        public string Slot { get; set; } = "";
     }
 }

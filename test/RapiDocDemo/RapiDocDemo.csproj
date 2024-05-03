@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<UserSecretsId>cb2091c6-d10b-4c1a-89c7-c72588c6ffe0</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<RootNamespace>RapiDocDemo</RootNamespace>

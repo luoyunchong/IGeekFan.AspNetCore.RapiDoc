@@ -47,6 +47,59 @@ namespace IGeekFan.AspNetCore.RapiDoc
        /// Config RapiDoc 
        /// </summary>
         public GenericRapiConfig GenericRapiConfig { get; set; } = new GenericRapiConfig();
+       
+       public SlotOptions SlotsOptions { get; set; } = new SlotOptions();
+    }
+
+  public class SlotOptions
+    {
+        /// <summary>
+        /// Replaces the default logo of the header with the URL specified
+        /// </summary>
+        public string Logo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Specifies the logo width of the custom logo, does not apply to the default logo
+        /// </summary>
+        public int LogoWidth { get; set; } = 36;
+
+        /// <summary>
+        /// Specifies the logo height of the custom logo, does not apply to the default logo
+        /// </summary>
+        public int LogoHeight { get; set; } = 36;
+
+        /// <summary>
+        /// Specifies the logo padding of the custom logo, does not apply to the default logo
+        /// </summary>
+        public int LogoPadding { get; set; } = 0;
+
+        /// <summary>
+        /// Adds a navigation logo on top of the side navigation bar with the URL provided, only available in read-mode
+        /// </summary>
+        public string NavLogo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Specifies the navigation logo width of the custom logo, only available in read-mode
+        /// </summary>
+        public int NavLogoWidth { get; set; } = 36;
+
+        /// <summary>
+        /// Specifies the navigation logo height of the custom logo, only available in read-mode
+        /// </summary>
+        public int NavLogoHeight { get; set; } = 36;
+
+        /// <summary>
+        /// Specifies the navigation logo padding of the custom logo, only available in read-mode
+        /// </summary>
+        public int NavLogoPadding { get; set; } = 0;
+            
+        public string NavLogoTitle { get; set; }
+        public string LogoTag => string.IsNullOrWhiteSpace(Logo) ? string.Empty : $"<img slot='logo' src='{Logo}' style='width:{LogoWidth}px; height:{LogoHeight}px; padding:{LogoPadding}px;'/>";
+        public string NavLogoTag => string.IsNullOrWhiteSpace(NavLogo) ? string.Empty : $@"
+        <div slot='nav-logo' style='display: flex; align-items: center; justify-content: center;'>
+            <img  src='{NavLogo}' style='width:{NavLogoWidth}px; height:{NavLogoHeight}px; padding:{NavLogoPadding}px; margin-right: 20px'/> 
+            <span style='color:#fff'> <b>{NavLogoTitle}</b> </span>
+        </div>";
     }
 
 

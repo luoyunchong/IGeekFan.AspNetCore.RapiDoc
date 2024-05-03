@@ -132,7 +132,6 @@ namespace IGeekFan.AspNetCore.RapiDoc
             }
         }
 
-
         private IDictionary<string, string> GetIndexArguments()
         {
             return new Dictionary<string, string>()
@@ -142,7 +141,10 @@ namespace IGeekFan.AspNetCore.RapiDoc
                 { "%(Url)", _options.ConfigObject.Urls.First().Url },
                 { "%(ConfigObject)", JsonSerializer.Serialize(_options.ConfigObject, _jsonSerializerOptions) },
                 { "%(OAuthConfigObject)", JsonSerializer.Serialize(_options.OAuthConfigObject, _jsonSerializerOptions) },
-                { "%(GenericRapiConfig)", JsonSerializer.Serialize(_options.GenericRapiConfig, _jsonSerializerOptions) }
+                { "%(GenericRapiConfig)", JsonSerializer.Serialize(_options.GenericRapiConfig, _jsonSerializerOptions) },
+                //Slot
+                { "%(LogoTag)", _options.SlotsOptions.LogoTag },
+                { "%(NavLogoTag)", _options.SlotsOptions.NavLogoTag },
             };
         }
     }

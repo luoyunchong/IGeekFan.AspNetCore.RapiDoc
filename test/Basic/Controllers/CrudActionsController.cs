@@ -32,7 +32,13 @@ namespace Basic.Controllers
         {
             return product;
         }
-
+        
+        
+        [HttpGet("GETCreate")]
+        public Product GETCreate([FromQuery] Product product)
+        {
+            return product;
+        }
         /// <summary>
         /// Searches the collection of products by description key words
         /// </summary>

@@ -30,7 +30,8 @@ namespace RapiDocDemo
                 {
                     Url = "",
                     Description = "vvv"
-                });
+                });       
+                c.DescribeAllParametersInCamelCase();
                 c.CustomOperationIds(apiDesc =>
                 {
                     var controllerAction = apiDesc.ActionDescriptor as ControllerActionDescriptor;
@@ -71,9 +72,16 @@ namespace RapiDocDemo
                 //This Config Higher priority
                 c.GenericRapiConfig = new GenericRapiConfig()
                 {
+                    ShowHeader = true,
                     RenderStyle = "read",
                     Theme = "light",//light | dark
                     SchemaStyle = "table",////tree | table
+                };
+                c.SlotsOptions = new SlotOptions()
+                {
+                    Logo = "https://rapidocweb.com/images/dog.png",
+                    NavLogo = "https://rapidocweb.com/images/dog.png",
+                    NavLogoTitle = "WEATHERFOWEATHERFORECASTRECAST"
                 };
             });
 
