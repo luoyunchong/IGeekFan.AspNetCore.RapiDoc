@@ -34,6 +34,11 @@
         </div>-->
         %(LogoTag)
         %(NavLogoTag)
+        %(HeaderTag)
+        %(OverviewTag)
+        %(ServersTag)
+        %(AuthTag)
+        %(FooterTag)
     </rapi-doc>
     <noscript><strong>We're sorry but RapiDoc doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript>
     <script>
@@ -104,6 +109,9 @@
             thedoc.setAttribute('api-key-location', genericRapiConfig.ApiKeyLocation);
             thedoc.setAttribute('api-key-value', genericRapiConfig.ApiKeyValue);
             thedoc.setAttribute('fetch-credentials', genericRapiConfig.FetchCredentials);
+            if (genericRapiConfig.Slot != "" && genericRapiConfig.Slot != null) {
+                thedoc.setAttribute('slot', genericRapiConfig.Slot);
+            }
         }
     </script>
 </body>

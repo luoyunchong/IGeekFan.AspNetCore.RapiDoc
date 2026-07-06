@@ -21,7 +21,7 @@ namespace IGeekFan.AspNetCore.RapiDoc
 {
     public class RapiDocMiddleware
     {
-        private const string EmbeddedFileNamespace = "IGeekFan.AspNetCore.RapiDoc.node_modules.rapidoc.dist";
+        private const string EmbeddedFileNamespace = "IGeekFan.AspNetCore.RapiDoc.rapidoc";
 
         private readonly RapiDocOptions _options;
         private readonly StaticFileMiddleware _staticFileMiddleware;
@@ -139,13 +139,38 @@ namespace IGeekFan.AspNetCore.RapiDoc
                 { "%(DocumentTitle)", _options.DocumentTitle },
                 { "%(HeadContent)", _options.HeadContent },
                 { "%(Url)", _options.ConfigObject.Urls.First().Url },
-                { "%(ConfigObject)", JsonSerializer.Serialize(_options.ConfigObject, _jsonSerializerOptions) },
-                { "%(OAuthConfigObject)", JsonSerializer.Serialize(_options.OAuthConfigObject, _jsonSerializerOptions) },
-                { "%(GenericRapiConfig)", JsonSerializer.Serialize(_options.GenericRapiConfig, _jsonSerializerOptions) },
+                { "%(ConfigObject)", JsEscape(JsonSerializer.Serialize(_options.ConfigObject, _jsonSerializerOptions)) },
+                { "%(OAuthConfigObject)", JsEscape(JsonSerializer.Serialize(_options.OAuthConfigObject, _jsonSerializerOptions)) },
+                { "%(GenericRapiConfig)", JsEscape(JsonSerializer.Serialize(_options.GenericRapiConfig, _jsonSerializerOptions)) },
                 //Slot
                 { "%(LogoTag)", _options.SlotsOptions.LogoTag },
                 { "%(NavLogoTag)", _options.SlotsOptions.NavLogoTag },
+                { "%(HeaderTag)", _options.SlotsOptions.HeaderTag },
+                { "%(FooterTag)", _options.SlotsOptions.FooterTag },
+                { "%(OverviewTag)", _options.SlotsOptions.OverviewTag },
+                { "%(ServersTag)", _options.SlotsOptions.ServersTag },
+                { "%(AuthTag)", _options.SlotsOptions.AuthTag },
             };
+        }
+
+        /// <summary>
+        /// Escapes a value so it can be safely embedded inside a single-quoted JavaScript string literal
+        /// (e.g. JSON.parse('...')). Prevents single quotes (such as those in font names) and
+        /// unescaped '&lt;/script&gt;' from breaking the surrounding script block.
+        /// </summary>
+        private static string JsEscape(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
+            return value
+                .Replace("\\", "\\\\")
+                .Replace("'", "\\'")
+                .Replace("\r", string.Empty)
+                .Replace("\n", string.Empty)
+                .Replace("</", "<\\/");
         }
     }
 }

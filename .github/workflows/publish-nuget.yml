@@ -1,0 +1,50 @@
+name: Publish NuGet Packages
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: NuGet login
+        id: nuget-login
+        uses: NuGet/login@v1
+        with:
+          api-key: ${{ secrets.NUGET_API_KEY }}
+
+      - name: Restore dependencies
+        run: dotnet restore IGeekFan.AspNetCore.RapiDoc.sln
+
+      - name: Build
+        run: dotnet build IGeekFan.AspNetCore.RapiDoc.sln --configuration Release --no-restore
+
+      - name: Pack
+        run: |
+          dotnet pack src/IGeekFan.AspNetCore.RapiDoc/IGeekFan.AspNetCore.RapiDoc.csproj --configuration Release --no-build --output ./nupkg/packages
+          dotnet pack src/IGeekFan.AspNetCore.RapiDoc.Extra/IGeekFan.AspNetCore.RapiDoc.Extra.csproj --configuration Release --no-build --output ./nupkg/packages
+
+      - name: Push to NuGet
+        run: dotnet nuget push ./nupkg/packages/*.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ./nupkg/packages/*.nupkg
+          generate_release_notes: true

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;netcoreapp3.1;net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;net8.0;net10.0</TargetFrameworks>
 		<Description>Middleware to expose an embedded version of the RapiDoc from an ASP.NET Core application And support Filter</Description>
 		<NoWarn>$(NoWarn);1591</NoWarn>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -11,14 +11,14 @@
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc.git</RepositoryUrl>
 		<RootNamespace>IGeekFan.AspNetCore.RapiDoc.Extra</RootNamespace>
-		<Version>0.0.8</Version>
+		<Version>0.0.10</Version>
 		<Company />
 		<Authors>igeekfan;</Authors>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Copyright>MIT License</Copyright>
-		<PackageLicenseExpression></PackageLicenseExpression>
-		<AssemblyVersion>0.0.8.0</AssemblyVersion>
-		<FileVersion>0.0.8.0</FileVersion>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<AssemblyVersion>0.0.10.0</AssemblyVersion>
+		<FileVersion>0.0.10.0</FileVersion>
 		<AssemblyName>IGeekFan.AspNetCore.RapiDoc.Extra</AssemblyName>
 		<PackageLicenseFile></PackageLicenseFile>
 	</PropertyGroup>
@@ -27,7 +27,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.2.2" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.4" />
-		<PackageReference Include="System.Text.Json" Version="7.0.2" />
+		<PackageReference Include="System.Text.Json" Version="10.0.0" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0' ">

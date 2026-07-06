@@ -74,6 +74,8 @@ namespace RapiDocDemo
                 {
                     ShowHeader = true,
                     RenderStyle = "read",
+                    SortTags = true,
+                    SortEndpointsBy = "summary", // "path" | "method" | "summary" | "none"
                     Theme = "light",//light | dark
                     SchemaStyle = "table",////tree | table
                 };
@@ -81,7 +83,8 @@ namespace RapiDocDemo
                 {
                     Logo = "https://rapidocweb.com/images/dog.png",
                     NavLogo = "https://rapidocweb.com/images/dog.png",
-                    NavLogoTitle = "WEATHERFOWEATHERFORECASTRECAST"
+                    NavLogoTitle = "WEATHERFOWEATHERFORECASTRECAST",
+                    Footer = "<p style='text-align:center;color:#888'>© 2026 RapiDoc Demo · Powered by IGeekFan.AspNetCore.RapiDoc</p>"
                 };
             });
 

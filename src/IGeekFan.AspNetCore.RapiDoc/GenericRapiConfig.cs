@@ -392,6 +392,10 @@ namespace IGeekFan.AspNetCore.RapiDoc
         /// </summary>
         public string FetchCredentials { get; set; } = "";
 
+        /// <summary>
+        /// Name of the slot (on a parent web component) into which this &lt;rapi-doc&gt; element should be projected.
+        /// Leave empty to render normally. Applied as the <c>slot</c> attribute on the &lt;rapi-doc&gt; element.
+        /// </summary>
         public string Slot { get; set; } = "";
     }
 }

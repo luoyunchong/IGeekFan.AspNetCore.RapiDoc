@@ -100,6 +100,40 @@ namespace IGeekFan.AspNetCore.RapiDoc
             <img  src='{NavLogo}' style='width:{NavLogoWidth}px; height:{NavLogoHeight}px; padding:{NavLogoPadding}px; margin-right: 20px'/> 
             <span style='color:#fff'> <b>{NavLogoTitle}</b> </span>
         </div>";
+
+        /// <summary>
+        /// Custom HTML content placed in the header slot (top header area of RapiDoc)
+        /// </summary>
+        public string Header { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Custom HTML content placed in the footer slot (bottom of the documentation)
+        /// </summary>
+        public string Footer { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Custom HTML content placed in the overview slot (replaces the default API info/description section)
+        /// </summary>
+        public string Overview { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Custom HTML content placed in the servers slot (server selection area)
+        /// </summary>
+        public string Servers { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Custom HTML content placed in the auth slot (authentication section)
+        /// </summary>
+        public string Auth { get; set; } = string.Empty;
+
+        private static string SlotTag(string slotName, string content)
+            => string.IsNullOrWhiteSpace(content) ? string.Empty : $"<div slot='{slotName}'>{content}</div>";
+
+        public string HeaderTag => SlotTag("header", Header);
+        public string FooterTag => SlotTag("footer", Footer);
+        public string OverviewTag => SlotTag("overview", Overview);
+        public string ServersTag => SlotTag("servers", Servers);
+        public string AuthTag => SlotTag("auth", Auth);
     }
 
 
