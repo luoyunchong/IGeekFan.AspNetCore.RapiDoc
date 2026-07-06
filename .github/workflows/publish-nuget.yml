@@ -6,6 +6,7 @@ on:
       - 'v*'
 
 permissions:
+  id-token: write
   contents: write
 
 jobs:
@@ -22,6 +23,11 @@ jobs:
             8.0.x
             10.0.x
 
+      - uses: NuGet/login@v1
+        with:
+          user: ${{ vars.NUGET_USER }}
+        id: nuget-login
+
       - name: Restore dependencies
         run: dotnet restore IGeekFan.AspNetCore.RapiDoc.sln
 
@@ -34,7 +40,7 @@ jobs:
           dotnet pack src/IGeekFan.AspNetCore.RapiDoc.Extra/IGeekFan.AspNetCore.RapiDoc.Extra.csproj --configuration Release --no-build --output ./nupkg/packages
 
       - name: Push to NuGet
-        run: dotnet nuget push ./nupkg/packages/*.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json --api-key "${{ secrets.NUGET_API_KEY }}"
+        run: dotnet nuget push ./nupkg/packages/*.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
