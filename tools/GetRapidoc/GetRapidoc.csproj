@@ -21,7 +21,7 @@
 		<PackageReference Include="Serilog.Sinks.Console" Version="4.0.2-dev-00890" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.1-dev-00947" />
 		<PackageReference Include="Humanizer.Core" Version="2.13.14" />
-		<PackageReference Include="Scriban" Version="5.0.0" />
+		<PackageReference Include="Scriban" Version="7.2.2" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">
